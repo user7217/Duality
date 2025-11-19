@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Duality — Messages</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+
+<body class="page-messages">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo">Duality</div>
+    <nav class="side-nav">
+      <a class="nav-link" href="home.html">Home</a>
+      <a class="nav-link active" href="messages.html">Messages</a>
+      <a class="nav-link" href="explore.html">Explore</a>
+      <a class="nav-link" href="notifications.html">Notifications</a>
+      <a class="nav-link" href="settings.html">Settings</a>
+    </nav>
+  </aside>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="top-title">Messages</div>
+    <div class="top-actions">
+      <button id="modeToggle" class="mode-toggle">Personal</button>
+      <div class="avatar"></div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="content messages-layout">
+
+    <!-- PERSONAL MODE CHAT LIST -->
+    <aside id="personal-dm-list" class="dm-list card">
+
+      <h3 class="dm-title">Chats</h3>
+
+      <div class="dm-item active">
+        <img src="https://randomuser.me/api/portraits/women/12.jpg" class="dm-avatar">
+        <div>
+          <div class="dm-name">Pooja</div>
+          <div class="dm-preview">Send photos!</div>
+        </div>
+      </div>
+
+      <div class="dm-item">
+        <img src="https://randomuser.me/api/portraits/men/31.jpg" class="dm-avatar">
+        <div>
+          <div class="dm-name">Arjun</div>
+          <div class="dm-preview">What time?</div>
+        </div>
+      </div>
+
+      <div class="dm-item">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="dm-avatar">
+        <div>
+          <div class="dm-name">Meera</div>
+          <div class="dm-preview">Call you later?</div>
+        </div>
+      </div>
+
+    </aside>
+
+
+    <!-- WORK MODE CHAT LIST -->
+    <aside id="work-dm-list" class="dm-list card">
+
+      <h3 class="dm-title">Work Chats</h3>
+
+      <div class="dm-item active">
+        <img src="https://randomuser.me/api/portraits/men/5.jpg" class="dm-avatar">
+        <div>
+          <div class="dm-name">Vikram</div>
+          <div class="dm-preview">Pushed new commit</div>
+        </div>
+      </div>
+
+      <div class="dm-item">
+        <img src="https://randomuser.me/api/portraits/women/55.jpg" class="dm-avatar">
+        <div>
+          <div class="dm-name">Disha</div>
+          <div class="dm-preview">Reviewing PR</div>
+        </div>
+      </div>
+
+      <div class="dm-item">
+        <img src="https://randomuser.me/api/portraits/men/88.jpg" class="dm-avatar">
+        <div>
+          <div class="dm-name">Product Team</div>
+          <div class="dm-preview">Update on sprint</div>
+        </div>
+      </div>
+
+    </aside>
+
+
+    <!-- PERSONAL MODE CHAT BOX -->
+    <section id="personal-chat" class="dm-chat card">
+
+      <div class="chat-header">
+        <img src="https://randomuser.me/api/portraits/women/12.jpg" class="dm-avatar">
+        <span>Pooja</span>
+      </div>
+
+      <div class="chat-body">
+
+        <div class="bubble bubble-other">
+          Oiiiii send the pics already 😭💀
+          <div class="bubble-time">6:10 PM</div>
+        </div>
+
+        <div class="bubble bubble-me">
+          I’m editing them wait 😭😭
+          <div class="bubble-time">6:12 PM</div>
+        </div>
+
+        <div class="bubble bubble-other">
+          Bro you’ve been editing for 2 hours 😭
+          <div class="bubble-time">6:13 PM</div>
+        </div>
+
+      </div>
+
+      <div class="chat-input">
+        <input placeholder="Message...">
+        <button class="send-btn">Send</button>
+      </div>
+
+    </section>
+
+
+    <!-- WORK MODE CHAT BOX -->
+    <section id="work-chat" class="dm-chat card">
+
+      <div class="chat-header">
+        <img src="https://randomuser.me/api/portraits/men/5.jpg" class="dm-avatar">
+        <span>Vikram</span>
+      </div>
+
+      <div class="chat-body">
+
+        <div class="bubble bubble-other">
+          I pushed the new build to staging.
+          <div class="bubble-time">4:21 PM</div>
+        </div>
+
+        <div class="bubble bubble-me">
+          Nice — running tests now.
+          <div class="bubble-time">4:22 PM</div>
+        </div>
+
+        <div class="bubble bubble-other">
+          Any issues so far?
+          <div class="bubble-time">4:23 PM</div>
+        </div>
+
+      </div>
+
+      <div class="chat-input">
+        <input placeholder="Message...">
+        <button class="send-btn">Send</button>
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+
+</html>

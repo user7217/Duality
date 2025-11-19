@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Duality — Home</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+
+<body class="page-home">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo">Duality</div>
+    <nav class="side-nav">
+      <a class="nav-link active" href="home.html">Home</a>
+      <a class="nav-link" href="messages.html">Messages</a>
+      <a class="nav-link" href="explore.html">Explore</a>
+      <a class="nav-link" href="notifications.html">Notifications</a>
+      <a class="nav-link" href="settings.html">Settings</a>
+    </nav>
+  </aside>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="top-title">Home</div>
+    <div class="top-actions">
+      <button id="modeToggle" class="mode-toggle">Personal</button>
+      <div class="avatar"></div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <!-- STORIES / CIRCLES -->
+    <section class="stories card">
+      <div class="story-item">
+        <img src="https://randomuser.me/api/portraits/women/65.jpg">
+        <p>You</p>
+      </div>
+      <div class="story-item">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg">
+        <p>Arjun</p>
+      </div>
+      <div class="story-item">
+        <img src="https://randomuser.me/api/portraits/women/22.jpg">
+        <p>Anu</p>
+      </div>
+      <div class="story-item">
+        <img src="https://randomuser.me/api/portraits/men/90.jpg">
+        <p>Ravi</p>
+      </div>
+      <div class="story-item">
+        <img src="https://randomuser.me/api/portraits/women/5.jpg">
+        <p>Mia</p>
+      </div>
+    </section>
+
+
+    <!-- PERSONAL MODE FEED -->
+    <section id="personal-feed" class="feed">
+      <article class="post card personal-card">
+        <div class="post-head">
+          <img class="post-avatar" src="https://randomuser.me/api/portraits/women/44.jpg">
+          <span>Pooja · 1h ago</span>
+        </div>
+        <div class="post-body">
+          Had a beautiful walk by the beach today 🌅
+          <img class="post-img" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800">
+        </div>
+      </article>
+
+      <article class="post card personal-card">
+        <div class="post-head">
+          <img class="post-avatar" src="https://randomuser.me/api/portraits/men/11.jpg">
+          <span>Rahul · 3h ago</span>
+        </div>
+        <div class="post-body">
+          Weekend vibes! Trying out homemade pizza 🍕
+          <img class="post-img" src="https://images.unsplash.com/photo-1542281286-9e0a16bb7366?w=800">
+        </div>
+      </article>
+    </section>
+
+
+    <!-- WORK MODE FEED -->
+    <section id="work-feed" class="feed">
+      <article class="post card work-card">
+        <div class="post-head">
+          <img class="post-avatar" src="https://randomuser.me/api/portraits/men/62.jpg">
+          <span>Vikram · 2h ago</span>
+        </div>
+        <div class="post-body">
+          Rolled out our new dashboard UI today 🚀  
+          <img class="post-img" src="https://images.unsplash.com/photo-1581093588401-22d45b0071f0?w=800">
+        </div>
+      </article>
+
+      <article class="post card work-card">
+        <div class="post-head">
+          <img class="post-avatar" src="https://randomuser.me/api/portraits/women/52.jpg">
+          <span>Priya · 6h ago</span>
+        </div>
+        <div class="post-body">
+          Team retrospective went well!  
+          <img class="post-img" src="https://images.unsplash.com/photo-1552581234-26160f608093?w=800">
+        </div>
+      </article>
+    </section>
+
+  </main>
+</body>
+</html>
