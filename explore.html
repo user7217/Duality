@@ -1,17 +1,38 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Duality — Explore</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="global.css" />
+  <style>
+    .explore-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+      gap:14px;
+    }
+    .explore-img{
+      width:100%;height:180px;object-fit:cover;
+      border-radius:14px;
+      box-shadow:0 4px 16px rgba(0,0,0,0.12);
+      transition:.22s transform,.22s box-shadow;
+      cursor:pointer;
+    }
+    .explore-img:hover{
+      transform:scale(1.04);
+      box-shadow:0 10px 28px rgba(0,0,0,0.2);
+    }
+    @media(max-width:768px){
+      .explore-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:10px;
+      }
+      .explore-img{height:150px}
+    }
+  </style>
   <script defer src="script.js"></script>
 </head>
-
 <body class="page-explore">
-
-  <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="logo">Duality</div>
     <nav class="side-nav">
@@ -23,7 +44,6 @@
     </nav>
   </aside>
 
-  <!-- TOP BAR -->
   <header class="topbar">
     <div class="top-title">Explore</div>
     <div class="top-actions">
@@ -32,31 +52,36 @@
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
   <main class="content">
 
-    <!-- PERSONAL MODE GRID -->
+    <!-- PERSONAL EXPLORE -->
     <section id="personal-explore" class="explore-grid">
-      <img class="explore-img" src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=800">
-      <img class="explore-img" src="https://images.unsplash.com/photo-1492447166138-50c3889fccb1?w=800">
-      <img class="explore-img" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800">
-      <img class="explore-img" src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=800">
-      <img class="explore-img" src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800">
-      <img class="explore-img" src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=800">
+      <img class="explore-img" src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=900">
+      <img class="explore-img" src="https://images.unsplash.com/photo-1492447166138-50c3889fccb1?w=900">
+      <img class="explore-img" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900">
+      <img class="explore-img" src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=900">
+      <img class="explore-img" src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=900">
+      <img class="explore-img" src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=900">
     </section>
 
-    <!-- WORK MODE GRID -->
+    <!-- WORK EXPLORE -->
     <section id="work-explore" class="explore-grid">
-      <img class="explore-img" src="https://images.unsplash.com/photo-1531497865144-0464ef8fb9a7?w=800">
-      <img class="explore-img" src="https://images.unsplash.com/photo-1521791055366-0d553872125f?w=800">
-      <img class="explore-img" src="https://images.unsplash.com/photo-1573497019413-89b2e5b86c85?w=800">
-      <img class="explore-img" src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800">
-      <img class="explore-img" src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800">
-      <img class="explore-img" src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800">
+      <img class="explore-img" src="https://images.unsplash.com/photo-1531497865144-0464ef8fb9a7?w=900">
+      <img class="explore-img" src="https://images.unsplash.com/photo-1521791055366-0d553872125f?w=900">
+      <img class="explore-img" src="https://images.unsplash.com/photo-1573497019413-89b2e5b86c85?w=900">
+      <img class="explore-img" src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=900">
+      <img class="explore-img" src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=900">
+      <img class="explore-img" src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=900">
     </section>
 
   </main>
 
+  <div class="bottom-nav">
+    <a href="home.html">Home</a>
+    <a href="explore.html" class="active">Explore</a>
+    <a href="messages.html">Messages</a>
+    <a href="notifications.html">Alerts</a>
+    <a href="settings.html">Settings</a>
+  </div>
 </body>
-
 </html>

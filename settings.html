@@ -4,7 +4,26 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Duality — Settings</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="global.css" />
+  <style>
+    .settings-section{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+    .option{
+      padding:14px 16px;
+      border-radius:12px;
+      box-shadow:0 4px 16px rgba(0,0,0,0.06);
+      font-size:14px;
+      cursor:pointer;
+      transition:.16s transform,.16s box-shadow;
+    }
+    .option:hover{
+      transform:translateY(-2px);
+      box-shadow:0 8px 20px rgba(0,0,0,0.12);
+    }
+  </style>
   <script defer src="script.js"></script>
 </head>
 <body class="page-settings">
@@ -28,9 +47,31 @@
   </header>
 
   <main class="content">
-    <div class="card option">Account</div>
-    <div class="card option">Privacy</div>
-    <div class="card option">Switch Mode</div>
+
+    <!-- PERSONAL SETTINGS -->
+    <section id="personal-settings" class="settings-section">
+      <div class="option personal-card">Account</div>
+      <div class="option personal-card">Story Privacy</div>
+      <div class="option personal-card">Close Friends</div>
+      <div class="option personal-card">Notification Preferences</div>
+    </section>
+
+    <!-- WORK SETTINGS -->
+    <section id="work-settings" class="settings-section">
+      <div class="option work-card">Professional Profile</div>
+      <div class="option work-card">Team Permissions</div>
+      <div class="option work-card">Project Access</div>
+      <div class="option work-card">Compliance & Privacy</div>
+    </section>
+
   </main>
+
+  <div class="bottom-nav">
+    <a href="home.html">Home</a>
+    <a href="explore.html">Explore</a>
+    <a href="messages.html">Messages</a>
+    <a href="notifications.html">Alerts</a>
+    <a href="settings.html" class="active">Settings</a>
+  </div>
 </body>
 </html>

@@ -4,7 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Duality — Work Feed</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="global.css" />
+  <style>
+    /* uses shared feed styles */
+  </style>
   <script defer src="script.js"></script>
 </head>
 <body class="page-work">
@@ -20,20 +23,41 @@
   </aside>
 
   <header class="topbar">
-    <div class="top-title">Work</div>
+    <div class="top-title">Work Feed</div>
     <div class="top-actions">
-      <button id="modeToggle" class="mode-toggle" aria-pressed="false">Work</button>
+      <button id="modeToggle" class="mode-toggle">Work</button>
       <div class="avatar"></div>
     </div>
   </header>
 
   <main class="content">
+    <section class="stories">
+      <div class="story-item">
+        <img src="https://randomuser.me/api/portraits/men/5.jpg"><p>Vikram</p>
+      </div>
+      <div class="story-item">
+        <img src="https://randomuser.me/api/portraits/women/55.jpg"><p>Disha</p>
+      </div>
+    </section>
+
     <section class="feed">
-      <article class="post work-card card">
-        <div class="post-head">Colleague · 3h</div>
-        <div class="post-body">Work update: sprint notes, PRs, announcements.</div>
+      <article class="post card work-card">
+        <div class="post-head">
+          <img class="post-avatar" src="https://randomuser.me/api/portraits/men/5.jpg">
+          <span>Vikram</span>
+        </div>
+        <div class="post-body">Pushed new build to staging 🚀</div>
+        <img class="post-img" src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=900">
       </article>
     </section>
   </main>
+
+  <div class="bottom-nav">
+    <a href="home.html">Home</a>
+    <a href="explore.html">Explore</a>
+    <a href="messages.html">Messages</a>
+    <a href="notifications.html">Alerts</a>
+    <a href="settings.html">Settings</a>
+  </div>
 </body>
 </html>

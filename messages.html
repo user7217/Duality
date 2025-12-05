@@ -1,17 +1,83 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Duality — Messages</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="global.css" />
+  <style>
+    .messages-layout{display:flex;gap:20px}
+    .dm-list{width:260px}
+    .dm-title{font-weight:700;margin-bottom:10px}
+    .dm-item{
+      display:flex;align-items:center;gap:12px;
+      padding:10px;border-radius:10px;cursor:pointer;
+      transition:.18s background,.12s transform;
+    }
+    .dm-item:hover{background:#f5f5f8;transform:translateX(4px)}
+    .dm-item.active{background:#eef2ff}
+    body.mode-personal .dm-item.active{background:#ffe9f4}
+    body.mode-work .dm-item.active{background:#e4edff}
+    .dm-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover}
+    .dm-name{font-weight:600}
+    .dm-preview{font-size:12px;color:#6b7280}
+
+    .dm-chat{flex:1;display:flex;flex-direction:column;gap:10px}
+    .chat-header{
+      display:flex;align-items:center;gap:12px;
+      padding-bottom:8px;border-bottom:1px solid #eee;
+      font-weight:600;
+    }
+    .chat-body{
+      flex:1;
+      padding:12px;
+      border-radius:10px;
+      background:#fbfbfd;
+      overflow-y:auto;
+    }
+    .bubble{
+      max-width:70%;
+      padding:10px 14px;
+      border-radius:16px;
+      margin-bottom:12px;
+      font-size:14px;
+      line-height:1.35;
+    }
+    .bubble-other{
+      background:#f1f1f5;
+      border-bottom-left-radius:4px;
+    }
+    .bubble-me{
+      margin-left:auto;
+      background:#ffd6e8;
+      border-bottom-right-radius:4px;
+    }
+    body.mode-work .bubble-me{background:#dbe8ff}
+    .bubble-time{
+      font-size:10px;color:#9ca3af;margin-top:4px;text-align:right;
+    }
+    #typing{
+      font-size:12px;color:#9ca3af;margin-bottom:4px;opacity:0;transition:.15s opacity;
+    }
+    .chat-input{
+      display:flex;gap:10px;margin-top:6px;
+    }
+    .chat-input input{
+      flex:1;padding:10px;border-radius:8px;border:1px solid #d4d4d4;
+    }
+    .send-btn{
+      padding:10px 14px;border-radius:10px;border:none;
+      background:#111;color:#fff;font-weight:600;cursor:pointer;
+    }
+
+    @media (max-width:768px){
+      .messages-layout{flex-direction:column}
+      .dm-list{display:none}
+    }
+  </style>
   <script defer src="script.js"></script>
 </head>
-
 <body class="page-messages">
-
-  <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="logo">Duality</div>
     <nav class="side-nav">
@@ -23,7 +89,6 @@
     </nav>
   </aside>
 
-  <!-- TOP BAR -->
   <header class="topbar">
     <div class="top-title">Messages</div>
     <div class="top-actions">
@@ -32,144 +97,108 @@
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
   <main class="content messages-layout">
 
-    <!-- PERSONAL MODE CHAT LIST -->
-    <aside id="personal-dm-list" class="dm-list card">
-
+    <!-- PERSONAL LIST -->
+    <aside id="personal-dm-list" class="card dm-list">
       <h3 class="dm-title">Chats</h3>
+      <input id="searchBox" placeholder="Search chats..."
+             style="width:100%;padding:8px 10px;border-radius:8px;border:1px solid #d4d4d4;margin-bottom:10px;">
 
       <div class="dm-item active">
-        <img src="https://randomuser.me/api/portraits/women/12.jpg" class="dm-avatar">
+        <img class="dm-avatar" src="https://randomuser.me/api/portraits/women/12.jpg">
         <div>
           <div class="dm-name">Pooja</div>
-          <div class="dm-preview">Send photos!</div>
+          <div class="dm-preview">Send the pics!!</div>
         </div>
       </div>
 
       <div class="dm-item">
-        <img src="https://randomuser.me/api/portraits/men/31.jpg" class="dm-avatar">
+        <img class="dm-avatar" src="https://randomuser.me/api/portraits/men/31.jpg">
         <div>
           <div class="dm-name">Arjun</div>
-          <div class="dm-preview">What time?</div>
+          <div class="dm-preview">What time tonight?</div>
         </div>
       </div>
-
-      <div class="dm-item">
-        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="dm-avatar">
-        <div>
-          <div class="dm-name">Meera</div>
-          <div class="dm-preview">Call you later?</div>
-        </div>
-      </div>
-
     </aside>
 
-
-    <!-- WORK MODE CHAT LIST -->
-    <aside id="work-dm-list" class="dm-list card">
-
+    <!-- WORK LIST -->
+    <aside id="work-dm-list" class="card dm-list">
       <h3 class="dm-title">Work Chats</h3>
+      <input id="searchBox" placeholder="Search chats..."
+             style="width:100%;padding:8px 10px;border-radius:8px;border:1px solid #d4d4d4;margin-bottom:10px;">
 
       <div class="dm-item active">
-        <img src="https://randomuser.me/api/portraits/men/5.jpg" class="dm-avatar">
+        <img class="dm-avatar" src="https://randomuser.me/api/portraits/men/5.jpg">
         <div>
           <div class="dm-name">Vikram</div>
-          <div class="dm-preview">Pushed new commit</div>
+          <div class="dm-preview">New build is ready</div>
         </div>
       </div>
 
       <div class="dm-item">
-        <img src="https://randomuser.me/api/portraits/women/55.jpg" class="dm-avatar">
+        <img class="dm-avatar" src="https://randomuser.me/api/portraits/women/55.jpg">
         <div>
           <div class="dm-name">Disha</div>
-          <div class="dm-preview">Reviewing PR</div>
+          <div class="dm-preview">Reviewing your PR</div>
         </div>
       </div>
-
-      <div class="dm-item">
-        <img src="https://randomuser.me/api/portraits/men/88.jpg" class="dm-avatar">
-        <div>
-          <div class="dm-name">Product Team</div>
-          <div class="dm-preview">Update on sprint</div>
-        </div>
-      </div>
-
     </aside>
 
-
-    <!-- PERSONAL MODE CHAT BOX -->
+    <!-- PERSONAL CHAT -->
     <section id="personal-chat" class="dm-chat card">
-
       <div class="chat-header">
-        <img src="https://randomuser.me/api/portraits/women/12.jpg" class="dm-avatar">
+        <img class="dm-avatar" src="https://randomuser.me/api/portraits/women/12.jpg">
         <span>Pooja</span>
       </div>
-
+      <div id="typing">typing...</div>
       <div class="chat-body">
-
         <div class="bubble bubble-other">
-          Oiiiii send the pics already 😭💀
+          Oiii send the pics already 😭
           <div class="bubble-time">6:10 PM</div>
         </div>
-
         <div class="bubble bubble-me">
-          I’m editing them wait 😭😭
-          <div class="bubble-time">6:12 PM</div>
+          I'm editing them, wait 😭😭
+          <div class="bubble-time">6:11 PM</div>
         </div>
-
-        <div class="bubble bubble-other">
-          Bro you’ve been editing for 2 hours 😭
-          <div class="bubble-time">6:13 PM</div>
-        </div>
-
       </div>
-
       <div class="chat-input">
-        <input placeholder="Message...">
+        <input id="msgBox" placeholder="Message...">
         <button class="send-btn">Send</button>
       </div>
-
     </section>
 
-
-    <!-- WORK MODE CHAT BOX -->
+    <!-- WORK CHAT -->
     <section id="work-chat" class="dm-chat card">
-
       <div class="chat-header">
-        <img src="https://randomuser.me/api/portraits/men/5.jpg" class="dm-avatar">
+        <img class="dm-avatar" src="https://randomuser.me/api/portraits/men/5.jpg">
         <span>Vikram</span>
       </div>
-
+      <div id="typing">typing...</div>
       <div class="chat-body">
-
         <div class="bubble bubble-other">
           I pushed the new build to staging.
           <div class="bubble-time">4:21 PM</div>
         </div>
-
         <div class="bubble bubble-me">
-          Nice — running tests now.
+          Nice, I'll run tests now.
           <div class="bubble-time">4:22 PM</div>
         </div>
-
-        <div class="bubble bubble-other">
-          Any issues so far?
-          <div class="bubble-time">4:23 PM</div>
-        </div>
-
       </div>
-
       <div class="chat-input">
-        <input placeholder="Message...">
+        <input id="msgBox" placeholder="Message...">
         <button class="send-btn">Send</button>
       </div>
-
     </section>
 
   </main>
 
+  <div class="bottom-nav">
+    <a href="home.html">Home</a>
+    <a href="explore.html">Explore</a>
+    <a href="messages.html" class="active">Messages</a>
+    <a href="notifications.html">Alerts</a>
+    <a href="settings.html">Settings</a>
+  </div>
 </body>
-
 </html>

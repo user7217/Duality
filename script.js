@@ -1,40 +1,80 @@
-// Duality mode toggle (persists across pages)
-(function () {
-  const KEY = 'duality-mode'; // 'personal' or 'work'
+document.addEventListener("DOMContentLoaded", () => {
+  const body = document.body;
 
-  function applyMode(mode) {
-    document.body.classList.remove('mode-personal', 'mode-work');
-    document.body.classList.add(mode === 'work' ? 'mode-work' : 'mode-personal');
+  // ---------- Mode load ----------
+  const saved = localStorage.getItem("duality-mode");
+  const initialMode = saved === "work" ? "work" : "personal";
+  body.classList.remove("mode-personal","mode-work");
+  body.classList.add(`mode-${initialMode}`);
 
-    document.querySelectorAll('#modeToggle, .mode-toggle').forEach(btn => {
-      btn.textContent = mode === 'work' ? 'Work' : 'Personal';
-      btn.setAttribute('aria-pressed', mode === 'work');
+  const modeBtn = document.getElementById("modeToggle");
+  if (modeBtn) {
+    modeBtn.textContent = initialMode === "personal" ? "Personal" : "Work";
+    modeBtn.addEventListener("click", () => {
+      const isPersonal = body.classList.contains("mode-personal");
+      body.classList.toggle("mode-personal", !isPersonal);
+      body.classList.toggle("mode-work", isPersonal);
+      const newMode = isPersonal ? "work" : "personal";
+      modeBtn.textContent = newMode === "personal" ? "Personal" : "Work";
+      localStorage.setItem("duality-mode", newMode);
     });
   }
 
-  function toggleMode() {
-    const current = localStorage.getItem(KEY) || 'personal';
-    const next = current === 'personal' ? 'work' : 'personal';
-    localStorage.setItem(KEY, next);
-    applyMode(next);
+  // ---------- Greeting (home) ----------
+  const greet = document.getElementById("greet");
+  if (greet) {
+    const h = new Date().getHours();
+    greet.textContent =
+      h < 12 ? "Good morning 👋" :
+      h < 17 ? "Good afternoon 👋" :
+               "Good evening 👋";
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    // apply saved mode (default personal)
-    const saved = localStorage.getItem(KEY) || 'personal';
-    applyMode(saved);
+  // ---------- Search in messages ----------
+  const searchBox = document.getElementById("searchBox");
+  if (searchBox) {
+    searchBox.addEventListener("input", () => {
+      const q = searchBox.value.toLowerCase();
+      document.querySelectorAll(".dm-item").forEach(el => {
+        el.style.display =
+          el.textContent.toLowerCase().includes(q) ? "flex" : "none";
+      });
+    });
+  }
 
-    // wire up all toggles
-    document.querySelectorAll('#modeToggle, .mode-toggle').forEach(btn => {
-      btn.addEventListener('click', toggleMode);
+  // ---------- Typing indicator ----------
+  const msgBox = document.getElementById("msgBox");
+  const typing = document.getElementById("typing");
+  if (msgBox && typing) {
+    msgBox.addEventListener("input", () => {
+      typing.style.opacity = 1;
+      clearTimeout(window._typingTimer);
+      window._typingTimer = setTimeout(() => {
+        typing.style.opacity = 0;
+      }, 700);
+    });
+  }
+
+  // ---------- Auto scroll chat ----------
+  const chatBody = document.querySelector(".chat-body");
+  if (chatBody) {
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  // ---------- Image modal (posts + explore) ----------
+  const modal = document.createElement("div");
+  modal.style.cssText =
+    "position:fixed;inset:0;background:rgba(0,0,0,0.75);" +
+    "display:none;justify-content:center;align-items:center;z-index:9999;";
+  modal.addEventListener("click", () => { modal.style.display = "none"; });
+  document.body.appendChild(modal);
+
+  document.querySelectorAll(".post-img,.explore-img").forEach(img => {
+    img.style.cursor = "pointer";
+    img.addEventListener("click", () => {
+      modal.innerHTML =
+        `<img src="${img.src}" style="max-width:90%;max-height:90%;border-radius:14px;">`;
+      modal.style.display = "flex";
     });
   });
-
-  // Simple demo login: set personal and go to home
-  window.handleLogin = function (e) {
-    e && e.preventDefault && e.preventDefault();
-    localStorage.setItem(KEY, 'personal');
-    window.location.href = 'home.html';
-    return false;
-  };
-})();
+});
